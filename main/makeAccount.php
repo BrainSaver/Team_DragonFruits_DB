@@ -1,28 +1,3 @@
-<?php 
-    $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
-    mysqli_select_db($conn, 'db');
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $user = $_POST['username'];
-        $pass = $_POST['password'];
-    }
-    $id = isset($_POST['id']) ? $_POST['id'] : ''; 
-    $pw = isset($_POST['pw']) ? $_POST['pw'] : ''; 
-    $email = isset($_POST['email']) ? $_POST['email'] : ''; 
-
-    $conn = mysqli_connect('localhost', 'root', '***REMOVED***'); 
-    mysqli_select_db($conn, 'df');
-
-    $sql = "insert into user (";
-    $sql .= " id, pw, email) values (";
-    $sql .= "'" . $id . "',";
-    $sql .= "SHA2('" . $pw . "',256),";
-    $sql .= "'" . $email. "'";
-    $sql .= ");";
-    if(!mysqli_query($conn, $sql)) echo "error"; 
-    mysqli_close($conn); 
-?>
-
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -75,7 +50,7 @@
 <body>
     <div class="login-box">
         <h2>회원가입</h2>
-        <form method="POST" action="">
+        <form method="POST" action="./makeAccountReply.php">
             <div class="form-group">
                 <label for="id">아이디:</label>
                 <input type="text" id="id" name="id" required>
