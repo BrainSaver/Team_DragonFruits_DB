@@ -1,13 +1,8 @@
-<?php 
-    $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
-    mysqli_select_db($conn, 'db');
-?>
-
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>회원가입</title>
     <style>
         body {
             display: flex;
@@ -55,7 +50,7 @@
 <body>
     <div class="login-box">
         <h2>회원가입</h2>
-        <form method="POST" action="./accountReply.php">
+        <form method="POST" action="./makeAccountReply.php">
             <div class="form-group">
                 <label for="id">아이디:</label>
                 <input type="text" id="id" name="id" required>
