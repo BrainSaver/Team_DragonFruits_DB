@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Stock Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* 페이지 내 div 크기 설정 */
+        #chart-container {
+            width: 100%; /* 부모 요소에 맞게 조정 */
+            max-width: 800px; /* 최대 너비 제한 */
+            height: 400px;
+            margin: 0 auto; /* 가운데 정렬 */
+        }
+    </style>
+</head>
+<body>
+    <h1>Historical Stock Prices</h1>
+    <div id="chart-container">
+        <canvas id="stockChart"></canvas>
+    </div>
+
+    <script>
+        // 주어진 JSON 데이터를 JavaScript 객체로 변환
+        /*const jsonData = {
+            "prices": [
+                {"date": 1562074200, "open": 20.79, "high": 22.45, "low": 20.2, "close": 22.37},
+                {"date": 1561987800, "open": 19.77, "high": 19.86, "low": 19.17, "close": 19.24},
+                {"date": 1561728600, "open": 18.8, "high": 19.43, "low": 18.73, "close": 19.39},
+                // 더 많은 데이터 추가 가능
+            ]
+        };*/
+        var data;
+        fetch('test.php')
+        .then(response => response.json())
+        .then(data => {
+            // 데이터를 JSON 형식으로 받아 차트 업데이트
+            console.log(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+        // 날짜 및 종가 데이터를 추출
+
+        const jsonData = console.log(data);;
+        const labels = jsonData.prices.map(item => {
+            const date = new Date(item.date * 1000); // UNIX 타임스탬프를 날짜로 변환
+            return date.toLocaleDateString(); // 날짜 형식 변환
+        });
+
+        const closingPrices = jsonData.prices.map(item => item.close);
+
+        // Chart.js를 사용해 차트 생성
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line', // 선형 차트
+            data: {
+                labels: labels, // x축: 날짜
+                datasets: [{
+                    label: 'Closing Prices',
+                    data: closingPrices, // y축: 종가
+                    borderColor: 'rgba(75, 192, 192, 1)', // 선 색상
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // 배경 색상
+                    borderWidth: 2, // 선 두께
+                    fill: true // 채우기 여부
+                }]
+            },
+            options: {
+                responsive: true, // 반응형 설정
+                maintainAspectRatio: false, // div 크기에 맞게 조정
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date' // x축 제목
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Price (USD)' // y축 제목
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top' // 범례 위치
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
