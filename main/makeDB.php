@@ -1,7 +1,7 @@
-<?php
-    //$conn = mysqli_connect('localhost', 'root', '***REMOVED***');
-    //$sql = "create database df";
-    //mysqli_query($conn, $sql);
+<?php/*
+    $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
+    $sql = "create database df";
+    mysqli_query($conn, $sql);*/
 ?>
 
 <?php
