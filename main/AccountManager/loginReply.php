@@ -12,4 +12,6 @@ if($row != NULL) {
 }
 else echo "no";
 mysqli_close($conn); 
+
+/*이거 ID에 영어 알파벳 들어가면 로그인 오류남. 이유는 모르겠음. -길동현 */
 ?>
