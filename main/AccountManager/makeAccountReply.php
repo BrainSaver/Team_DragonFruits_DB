@@ -11,7 +11,7 @@
     $sql = "insert into userdata (";
     $sql .= " id, pw, email) values (";
     $sql .= "'" . $id . "',";
-    $sql .= "SHA2('" . $pw . "',256),";
+    $sql .= "SHA2(SHA2('" . $pw . "',256),256),";
     $sql .= "'" . $email. "'";
     $sql .= ");";
     if(!mysqli_query($conn, $sql)) echo "error"; 

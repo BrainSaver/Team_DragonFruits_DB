@@ -4,7 +4,7 @@ mysqli_select_db($conn, 'df');
 
 $id = isset($_POST['id']) ? $_POST['id'] : '';
 $pw = isset($_POST['pw']) ? $_POST['pw'] : '';
-$sql = "SELECT * FROM userdata WHERE id = ".$id." AND pw = sha2(".$pw.", 256)";
+$sql = "SELECT * FROM userdata WHERE id = ".$id." AND pw = sha2(sha2(".$pw.", 256),256)";
 $result = mysqli_query($conn, $sql);
 $row = $result->fetch_array(MYSQLI_ASSOC);
 if($row != NULL) {
