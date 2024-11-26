@@ -5,8 +5,8 @@ $baseUrl = 'https://api.stlouisfed.org/fred/series/observations';
 
 // 상품별 FRED Series ID
 $commodities = [
-    'Gold' => 'GOLDPMGBD228NLBM',         // 금
-    'Silver' => 'SLVPRUSD',               // 은
+    'Gold' => 'IQ12260',         // 금
+    'CNG' => 'DHHNGSP',               // 가스
     'Copper' => 'PCOPPUSDM',              // 구리
     'Aluminum' => 'PALUMUSDM',            // 알루미늄
     'Crude Oil' => 'DCOILWTICO',          // 국제유가
@@ -16,7 +16,7 @@ $commodities = [
 $host = 'localhost';
 $db = 'commodities_data';
 $user = 'root';
-$pass = 'password'; // 자신의 DB 비밀번호 입력
+$pass = '***REMOVED***'; // 자신의 DB 비밀번호 입력
 $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
 
 try {
@@ -34,7 +34,7 @@ foreach ($commodities as $commodity => $seriesId) {
     $url = "$baseUrl?series_id=$seriesId&api_key=$apiKey&file_type=json";
 
     echo "Fetching data for $commodity...\n";
-    $response = file_get_contents($url);
+    $response = @file_get_contents($url);
 
     if ($response === false) {
         echo "Failed to fetch data for $commodity\n";
@@ -42,6 +42,10 @@ foreach ($commodities as $commodity => $seriesId) {
     }
 
     $data = json_decode($response, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        echo "Failed to decode JSON for $commodity: " . json_last_error_msg() . "\n";
+        continue;
+    }
 
     if (isset($data['observations'])) {
         foreach ($data['observations'] as $observation) {
