@@ -17,9 +17,9 @@ $host = 'localhost';
 $db = 'commodities_data';
 $user = 'root';
 $pass = '***REMOVED***'; // 자신의 DB 비밀번호 입력
-$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
+//$dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
 
-try {
+/*try {
     $pdo = new PDO($dsn, $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -27,7 +27,9 @@ try {
     echo "Database connected successfully\n";
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
-}
+}*/
+$conn = mysqli_connect('localhost', 'root', '***REMOVED***');
+mysqli_select_db($conn, 'df');
 
 // 데이터 가져오기 및 저장
 foreach ($commodities as $commodity => $seriesId) {
@@ -53,15 +55,16 @@ foreach ($commodities as $commodity => $seriesId) {
             $price = $observation['value'];
 
             // 데이터베이스에 저장
-            $stmt = $pdo->prepare("
+            $sql .= "
                 INSERT IGNORE INTO commodity_prices (commodity, date, price) 
-                VALUES (:commodity, :date, :price)
-            ");
-            $stmt->execute([
+                VALUES (:$commodity, :$date, :$price)
+            ";
+            /*$stmt->execute([
                 ':commodity' => $commodity,
                 ':date' => $date,
                 ':price' => $price,
-            ]);
+            ]);*/
+            mysqli_query($conn)
         }
         echo "Data for $commodity successfully inserted.\n";
     } else {
