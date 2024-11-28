@@ -15,7 +15,7 @@
         <form method="POST" action="./findIDReply.php">
             <div class="form-group">
                 <label for="email">이메일:</label>
-                <input type="text" id="email" required>
+                <input type="text" id="email" name="email" required> <!-- name 없어서 안된거였노~ -->
             </div>
             <input type="submit" value="찾기">
         </form>
