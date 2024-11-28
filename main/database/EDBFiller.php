@@ -1,44 +1,49 @@
 <?php
 // FRED API 설정
-$apiKey = '***REMOVED***';
-$baseUrl = 'https://api.stlouisfed.org/fred/series/observations';
+$apiKey = '***REMOVED***'; // FRED API 키
+$baseUrl = 'https://api.stlouisfed.org/fred/series/observations'; // FRED API 기본 URL
 
 // 상품별 FRED Series ID
 $commodities = [
     'Gold' => 'IQ12260',         // 금
-    'CNG' => 'DHHNGSP',               // 가스
-    'Copper' => 'PCOPPUSDM',              // 구리
-    'Aluminum' => 'PALUMUSDM',            // 알루미늄
-    'Crude Oil' => 'DCOILWTICO',          // 국제유가
+    'CNG' => 'DHHNGSP',          // 가스
+    'Copper' => 'PCOPPUSDM',     // 구리
+    'Aluminum' => 'PALUMUSDM',   // 알루미늄
+    'Crude Oil' => 'DCOILWTICO', // 국제유가
 ];
 
-$host = 'localhost';
-$db = 'commodities_data';
-$user = 'root';
-$pass = '***REMOVED***';
+// 데이터베이스 연결 설정
+$host = 'localhost'; // 데이터베이스 호스트
+$db = 'commodities_data'; // 데이터베이스 이름
+$user = 'root'; // 데이터베이스 사용자
+$pass = '***REMOVED***'; // 데이터베이스 비밀번호
 
-$conn = mysqli_connect('localhost', 'root', '***REMOVED***');
-mysqli_select_db($conn, $db);
+// 데이터베이스 연결
+$conn = mysqli_connect($host, $user, $pass); // MySQL 연결
+mysqli_select_db($conn, $db); // 데이터베이스 선택
 
+// 각 상품에 대해 데이터 가져오기 및 삽입
 foreach ($commodities as $commodity => $seriesId) {
-    $url = "$baseUrl?series_id=$seriesId&api_key=$apiKey&file_type=json";
-    $response = @file_get_contents($url);
-    $data = json_decode($response, true);
+    $url = "$baseUrl?series_id=$seriesId&api_key=$apiKey&file_type=json"; // API 요청 URL 생성
+    $response = @file_get_contents($url); // API 응답 가져오기
+    $data = json_decode($response, true); // JSON 응답을 배열로 디코딩
 
+    // 데이터가 있는 경우
     if (isset($data['observations'])) {
         foreach ($data['observations'] as $observation) {
-            $date = $observation['date'];
-            $price = $observation['value'];
+            $date = $observation['date']; // 관측 날짜
+            $price = $observation['value']; // 관측 가격
+            $table = strtolower(str_replace(' ', '_', $commodity)) . '_prices'; // 테이블 이름 생성
             $sql = "
-                INSERT IGNORE INTO commodity_prices (commodity, date, price) VALUES ('$commodity', '$date', '$price')
-            ";
-            mysqli_query($conn, $sql);
+                INSERT IGNORE INTO $table (commodity, date, price) VALUES ('$commodity', '$date', '$price')"; // SQL 삽입 쿼리 생성
+            mysqli_query($conn, $sql); // SQL 쿼리 실행
         }
-        echo "Data for $commodity successfully inserted.\n";
+        echo "Data for $commodity successfully inserted.\n"; // 성공 메시지 출력
     } else {
-        echo "No data found for $commodity\n";
+        echo "No data found for $commodity\n"; // 데이터 없음 메시지 출력
     }
 }
-mysqli_close($conn);
-?>
 
+// 데이터베이스 연결 종료
+mysqli_close($conn); // MySQL 연결 종료
+?>
