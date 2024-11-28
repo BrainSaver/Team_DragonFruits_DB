@@ -1,15 +1,21 @@
 <?php
+var_dump($_POST);
+echo $_POST['id'];
 $conn = mysqli_connect('localhost', 'root', '***REMOVED***'); 
 mysqli_select_db($conn, 'df');
-
-$id = isset($_POST['email']) ? $_POST['email'] : '';;
-$sql = "SELECT * FROM userdata WHERE email = ".$email;
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+$email = mysqli_real_escape_string($conn, $email);
+$sql = "SELECT * FROM userdata WHERE email = '$email'";
 $result = mysqli_query($conn, $sql);
-echo $result;
-$row = $result->fetch_array(MYSQLI_ASSOC);
-if($row != NULL) {
-    echo "yes";
+if (!$result) {
+    echo "Error executing query: " . mysqli_error($conn);
+    exit;
 }
-else echo "no";
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+if ($row) {
+    echo $row['id'];
+} else {
+    echo "no";
+}
 mysqli_close($conn); 
 ?>

@@ -12,10 +12,10 @@
 <body>
     <div class="login-box">
         <h2>아이디 찾기</h2>
-        <form method="POST" action="./loginReply.php">
+        <form method="POST" action="./findIDReply.php">
             <div class="form-group">
-                <label for="id">이메일:</label>
-                <input type="text" id="id" name="id" required>
+                <label for="email">이메일:</label>
+                <input type="text" id="email" required>
             </div>
             <input type="submit" value="찾기">
         </form>
