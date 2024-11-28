@@ -18,7 +18,8 @@
                 <label for="pw">비밀번호:</label>
                 <input type="password" id="pw" name="pw" required>
             </div>
-            <p><a href="./findPW.php">비밀번호 찾기</a>/<a href="./findId.php">아이디 찾기</a></p>
+            <p><a href="./findPW.php">비밀번호 찾기</a>/<a href="./findId.php">아이디 찾기</a><br>
+            <a href="./makeAccount.php">회원가입</a></P>
             <input type="submit" value="로그인">
         </form>
     </div>
