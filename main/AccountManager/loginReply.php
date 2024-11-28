@@ -4,14 +4,14 @@ mysqli_select_db($conn, 'df');
 
 $id = isset($_POST['id']) ? $_POST['id'] : '';
 $pw = isset($_POST['pw']) ? $_POST['pw'] : '';
-$sql = "SELECT * FROM userdata WHERE id = ".$id." AND pw = sha2(sha2(".$pw.", 256),256)";
+$sql = "SELECT * FROM userdata WHERE id = '".$id."' AND pw = sha2(sha2(".$pw.", 256),256)";
 $result = mysqli_query($conn, $sql);
 $row = $result->fetch_array(MYSQLI_ASSOC);
-if($row != NULL) {
-    echo "yes";
-}
+echo $row['email'];
+if($row != NULL) echo "yes";
 else echo "no";
 mysqli_close($conn); 
 
 /*이거 ID에 영어 알파벳 들어가면 로그인 오류남. 이유는 모르겠음. -길동현 */
+/*고침 -이재훈 */
 ?>

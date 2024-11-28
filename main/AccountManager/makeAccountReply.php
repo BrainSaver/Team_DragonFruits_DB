@@ -14,6 +14,7 @@
     $sql .= "SHA2(SHA2('" . $pw . "',256),256),";
     $sql .= "'" . $email. "'";
     $sql .= ");";
+    echo $sql;
     if(!mysqli_query($conn, $sql)) echo "error"; 
     mysqli_close($conn); 
 ?>
