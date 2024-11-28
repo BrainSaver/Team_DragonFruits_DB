@@ -1,6 +1,6 @@
 <?php
 var_dump($_POST);
-echo $_POST['id'];
+//echo $_POST['id'];
 $conn = mysqli_connect('localhost', 'root', '***REMOVED***'); 
 mysqli_select_db($conn, 'df');
 $email = isset($_POST['email']) ? $_POST['email'] : '';
