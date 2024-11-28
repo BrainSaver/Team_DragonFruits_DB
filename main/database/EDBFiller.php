@@ -12,16 +12,14 @@ $commodities = [
     'Crude Oil' => 'DCOILWTICO',          // 국제유가
 ];
 
-// MySQL 연결 정보
 $host = 'localhost';
 $db = 'commodities_data';
 $user = 'root';
-$pass = '***REMOVED***'; // 자신의 DB 비밀번호 입력
+$pass = '***REMOVED***';
 
 $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
 mysqli_select_db($conn, $db);
 
-// 데이터 가져오기 및 저장
 foreach ($commodities as $commodity => $seriesId) {
     $url = "$baseUrl?series_id=$seriesId&api_key=$apiKey&file_type=json";
     $response = @file_get_contents($url);
@@ -31,12 +29,10 @@ foreach ($commodities as $commodity => $seriesId) {
         foreach ($data['observations'] as $observation) {
             $date = $observation['date'];
             $price = $observation['value'];
-            // 데이터베이스에 저장
             $sql = "
                 INSERT IGNORE INTO commodity_prices (commodity, date, price) VALUES ('$commodity', '$date', '$price')
             ";
             mysqli_query($conn, $sql);
-            echo $sql;
         }
         echo "Data for $commodity successfully inserted.\n";
     } else {
