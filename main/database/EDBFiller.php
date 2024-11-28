@@ -41,3 +41,4 @@ foreach ($commodities as $commodity => $seriesId) {
 }
 mysqli_close($conn);
 ?>
+
