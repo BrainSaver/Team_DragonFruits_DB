@@ -13,10 +13,10 @@ $commodities = [
 ];
 
 // 데이터베이스 연결 설정
-$host = 'localhost'; // 데이터베이스 호스트
-$db = 'commodities_data'; // 데이터베이스 이름
-$user = 'root'; // 데이터베이스 사용자
-$pass = '***REMOVED***'; // 데이터베이스 비밀번호
+$host = 'localhost';
+$db = 'commodities_data';
+$user = 'root';
+$pass = '***REMOVED***';
 
 // 데이터베이스 연결
 $conn = mysqli_connect($host, $user, $pass); // MySQL 연결
@@ -24,9 +24,9 @@ mysqli_select_db($conn, $db); // 데이터베이스 선택
 
 // 각 상품에 대해 데이터 가져오기 및 삽입
 foreach ($commodities as $commodity => $seriesId) {
-    $url = "$baseUrl?series_id=$seriesId&api_key=$apiKey&file_type=json"; // API 요청 URL 생성
+    $url = "$baseUrl?series_id=$seriesId&api_key=$apiKey&file_type=json";
     $response = @file_get_contents($url); // API 응답 가져오기
-    $data = json_decode($response, true); // JSON 응답을 배열로 디코딩
+    $data = json_decode($response, true);
 
     // 데이터가 있는 경우
     if (isset($data['observations'])) {
@@ -38,12 +38,11 @@ foreach ($commodities as $commodity => $seriesId) {
                 INSERT IGNORE INTO $table (commodity, date, price) VALUES ('$commodity', '$date', '$price')"; // SQL 삽입 쿼리 생성
             mysqli_query($conn, $sql); // SQL 쿼리 실행
         }
-        echo "Data for $commodity successfully inserted.\n"; // 성공 메시지 출력
+        echo "Data for $commodity inserted.\n";
     } else {
-        echo "No data found for $commodity\n"; // 데이터 없음 메시지 출력
+        echo "No data found for $commodity\n";
     }
 }
 
-// 데이터베이스 연결 종료
-mysqli_close($conn); // MySQL 연결 종료
+mysqli_close($conn);
 ?>

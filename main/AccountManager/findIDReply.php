@@ -14,7 +14,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 if ($row) {
     echo $row['id'];
 } else {
-    echo "no";
+    echo "access denied";
 }
 mysqli_close($conn); 
 ?>
