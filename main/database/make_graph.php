@@ -1,42 +1,84 @@
 <?php
+// 데이터베이스에 연결
 $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
-if (!$conn) die('Could not connect: ' . mysqli_error($conn));
-if (!mysqli_select_db($conn, 'commodities_data')) die("Can't use commodities_data: " . mysqli_error($conn));
+if (!$conn) die('연결할 수 없습니다: ' . mysqli_error($conn));
 
-// 테이블 목록을 자동으로 가져오기
-$sql = "SHOW TABLES";
-$result = mysqli_query($conn, $sql);
+// 'commodities_data' 데이터베이스 선택
+if (!mysqli_select_db($conn, 'commodities_data')) die("commodities_data를 사용할 수 없습니다: " . mysqli_error($conn));
 
-if ($result) {
-    // 결과를 배열로 저장
-    $tables = [];
-    while ($row = mysqli_fetch_array($result)) {
-        $tables[] = $row[0]; // 첫 번째 컬럼에 테이블 이름이 있음
-    }
+// 상품 목록 정의
+$commodities = ['gold', 'copper', 'aluminum', 'cng', 'crude_oil'];
+$data = [['Date']];
 
-    // 테이블 목록 출력
-    foreach ($tables as $table) {
-        echo "<h3>$table 의 데이터</h3>";
-        
-        // 테이블마다 데이터를 조회
-        $sql = "SELECT * FROM $table";
-        $result = mysqli_query($conn, $sql);
-        
-        if ($result) {
-            // 각 행을 반복하면서 출력
-            while ($row = mysqli_fetch_array($result)) {
-                echo "ID: " . $row['id'] . " ";
-                echo "Commodity: " . $row['commodity'] . " ";
-                echo "Date: " . $row['date'] . " ";
-                echo "Price: " . $row['price'] . "<br/>";
-            }
-        } else {
-            echo "Error fetching data from $table: " . mysqli_error($conn) . "<br/>";
-        }
-    }
-} else {
-    echo "Error retrieving table names: " . mysqli_error($conn);
+// 데이터 헤더 초기화
+foreach ($commodities as $commodity) {
+  $data[0][] = ucfirst(str_replace('_', ' ', $commodity));
 }
 
+// 각 상품에 대한 데이터 가져오기
+$commodityData = [];
+foreach ($commodities as $commodity) {
+  $sql = "SELECT date, price FROM {$commodity}_prices";
+  $result = mysqli_query($conn, $sql);
+  $commodityData[$commodity] = [];
+  if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $commodityData[$commodity][$row['date']] = (float)$row['price'];
+    }
+  }
+}
+
+// 모든 날짜 병합
+$allDates = [];
+foreach ($commodityData as $dataPerCommodity) {
+  $allDates = array_merge($allDates, array_keys($dataPerCommodity));
+}
+$allDates = array_unique($allDates);
+sort($allDates);
+
+// 데이터 채우기
+foreach ($allDates as $date) {
+  $row = [$date];
+  foreach ($commodities as $commodity) {
+    $row[] = isset($commodityData[$commodity][$date]) ? $commodityData[$commodity][$date] : null;
+  }
+  $data[] = $row;
+}
+
+// 데이터베이스 연결 종료
 mysqli_close($conn);
 ?>
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <!-- 구글 차트 로드 -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        // PHP에서 생성된 데이터를 JSON 형식으로 변환
+        var data = google.visualization.arrayToDataTable(<?php echo json_encode($data); ?>);
+
+        // 차트 옵션
+        var options = {
+          title: '자원의 가격 변동 추이',
+          hAxis: {title: 'Date', titleTextStyle: {color: '#333'}},
+          vAxis: {title: 'Price', minValue: 0},
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        // 영역 차트 생성 및 그리기
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 100%; height: 100%;"></div>
+  </body>
+</html>
