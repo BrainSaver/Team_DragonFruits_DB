@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        // 첫 번째 차트 데이터
+        var data1 = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        // 두 번째 차트 데이터
+        var data2 = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Study',     4],
+          ['Exercise',  3],
+          ['Relax',     6],
+          ['Socialize', 2],
+          ['Sleep',     9]
+        ]);
+
+        // 첫 번째 차트 옵션
+        var options1 = {
+          title: 'My Daily Activities (Chart 1)',
+          pieHole: 0.4,
+        };
+
+        // 두 번째 차트 옵션
+        var options2 = {
+          title: 'My Daily Activities (Chart 2)',
+          pieHole: 0.4,
+        };
+
+        // 첫 번째 원형 차트 생성
+        var chart1 = new google.visualization.PieChart(document.getElementById('donutchart1'));
+        chart1.draw(data1, options1);
+
+        // 두 번째 원형 차트 생성
+        var chart2 = new google.visualization.PieChart(document.getElementById('donutchart2'));
+        chart2.draw(data2, options2);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 첫 번째 원형 차트를 위한 div -->
+    <div id="donutchart1" style="width: 900px; height: 500px;"></div>
+
+    <!-- 두 번째 원형 차트를 위한 div -->
+    <div id="donutchart2" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
