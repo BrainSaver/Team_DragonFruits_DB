@@ -8,34 +8,33 @@
       function drawCharts() {
         // 첫 번째 차트 데이터
         var data1 = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Task', 'Market Capitalization'],
+          ['뉴몬트(금)',67.1],
+          ['LS ELECTRIC(구리)',4.3],
+          ['알코아(알루미늄)',  16.7],
+          ['엑슨모빌(석유)', 723],
+          ['린데(가스)',306]
         ]);
 
         // 두 번째 차트 데이터
         var data2 = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Study',     4],
-          ['Exercise',  3],
-          ['Relax',     6],
-          ['Socialize', 2],
-          ['Sleep',     9]
+          ['Task', 'export'],
+          ['중국',3.6 ],
+          ['미국',6],
+          ['호주',10],
+          ['일본',7.6],
+          ['호주',10]
+
         ]);
 
         // 첫 번째 차트 옵션
         var options1 = {
-          title: 'My Daily Activities (Chart 1)',
-          pieHole: 0.4,
+          title: '관련 자원 기업 시가 총액(조)',
         };
 
         // 두 번째 차트 옵션
         var options2 = {
-          title: 'My Daily Activities (Chart 2)',
-          pieHole: 0.4,
+          title: '주요 석유 수출 국가(조)',
         };
 
         // 첫 번째 원형 차트 생성
@@ -47,12 +46,26 @@
         chart2.draw(data2, options2);
       }
     </script>
+    <style>
+      .chart-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* 차트 사이 간격 */
+      }
+
+      .chart {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
   </head>
   <body>
-    <!-- 첫 번째 원형 차트를 위한 div -->
-    <div id="donutchart1" style="width: 900px; height: 500px;"></div>
+    <div class="chart-container">
+      <!-- 첫 번째 원형 차트를 위한 div -->
+      <div id="donutchart1" class="chart"></div>
 
-    <!-- 두 번째 원형 차트를 위한 div -->
-    <div id="donutchart2" style="width: 900px; height: 500px;"></div>
+      <!-- 두 번째 원형 차트를 위한 div -->
+      <div id="donutchart2" class="chart"></div>
+    </div>
   </body>
 </html>
