@@ -12,7 +12,7 @@ $data = [['Date']];
 
 // 데이터 헤더 초기화
 foreach ($commodities as $commodity) {
-  $data[0][] = ucfirst(str_replace('_', ' ', $commodity));
+  $data[0][] = strtoupper($commodity);
 }
 
 // 각 상품에 대한 데이터 가져오기
@@ -33,7 +33,7 @@ $allDates = [];
 foreach ($commodityData as $dataPerCommodity) {
   $allDates = array_merge($allDates, array_keys($dataPerCommodity));
 }
-$allDates = array_unique($allDates);
+$allDates = array_unique($allDates);// 중복되는 데이터 지우기
 sort($allDates);
 
 // 데이터 채우기
