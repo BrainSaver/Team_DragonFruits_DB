@@ -1,5 +1,4 @@
 <?php
-var_dump($_POST);
 $conn = mysqli_connect('localhost', 'root', '***REMOVED***'); 
 mysqli_select_db($conn, 'df');
 $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -14,7 +13,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 if ($row) {
     echo $row['id'];
 } else {
-    echo "access denied";
+    include("./accessDenied.html");
 }
 mysqli_close($conn); 
 ?>
