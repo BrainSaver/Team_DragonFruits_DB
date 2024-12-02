@@ -4,11 +4,17 @@ mysqli_select_db($conn, 'df');
 
 $id = isset($_POST['id']) ? $_POST['id'] : '';
 $pw = isset($_POST['pw']) ? $_POST['pw'] : '';
+$id = mysqli_real_escape_string($conn, $id);
+$pw = mysqli_real_escape_string($conn, $pw);
 $sql = "SELECT * FROM userdata WHERE id = '".$id."' AND pw = sha2(sha2(".$pw.", 256),256)";
 $result = mysqli_query($conn, $sql);
 $row = $result->fetch_array(MYSQLI_ASSOC);
-echo $row['email'];
-if($row != NULL) echo "yes";
+if($row != NULL) {
+    $_cookie_name = "user";
+    $user_id = "$id";
+    setcookie($cookie_name, $cookie_value, time() + (3600), "/"); // 86400 = 1 day
+    include("././DASHBOARD.html");
+}
 else echo "no";
 mysqli_close($conn); 
 
