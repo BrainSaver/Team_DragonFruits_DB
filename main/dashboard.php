@@ -1,5 +1,5 @@
 <?php 
-if(!isset($_COOKIE['user'])) include('index.php');
+if(!isset($_COOKIE['user'])) header("Location: ./index.php");
 ?>
 
 <!DOCTYPE html>
@@ -16,15 +16,19 @@ if(!isset($_COOKIE['user'])) include('index.php');
             box-sizing: border-box;
         }
         .header {
+            width: 100%;
+            height: 7%;
+            position: fixed;
             display: flex;
             justify-content: space-around;
-            background-color: #f4f4f4;
+            background-color: lightgrey;
+            color : white;
             padding: 10px;
-            border-bottom: 1px solid #ccc;
         }
         .header div {
-            padding: 10px;
-            background: #e0e0e0;
+            text-align:center;
+            padding: 1px;
+            background: grey;
             border-radius: 5px;
             text-align: center;
         }
@@ -66,13 +70,13 @@ if(!isset($_COOKIE['user'])) include('index.php');
 </head>
 <body>
     <header class="header">
-        <div><?php echo $_COOKIE['user']?>님 반갑습니다</div>
+        <div><h1>Dragon Fruits</h1></div>
         <div>금 +19%</div>
         <div>구리 -11</div>
         <div>알루미늄 +3</div>
         <div>가스 +61</div>
         <div>석유 +17</div>
-        <div><button" class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</div>
+        <div><?php echo $_COOKIE['user']?>님 반갑습니다 <br> <button" class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</div>
     </header>
     <main class="container">
         <div class="box map">
@@ -81,7 +85,7 @@ if(!isset($_COOKIE['user'])) include('index.php');
         </div>
         <div class="box news">
 
-                <iframe src="./dashboard/news.html" id="contentFrame"></iframe>
+                <!--<iframe src="./dashboard/news.html" id="contentFrame"></iframe>-->
 
         </div>
         <div class="box chart">
