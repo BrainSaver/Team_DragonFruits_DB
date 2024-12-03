@@ -12,7 +12,7 @@ $row = $result->fetch_array(MYSQLI_ASSOC);
 if($row != NULL) {
     //$_cookie_name = "user";
     //$user_id = "$id";
-    //setcookie($cookie_name, $cookie_value, time() + (3600), "/"); // 86400 = 1 day
+    //setcookie($cookie_name, $user_id, time() + (3600), "/"); // 86400 = 1 day
     include("../dashboard.html");
 }
 else include("./accessDenied.html");
