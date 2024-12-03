@@ -1,5 +1,5 @@
 <?php 
-if(!isset($_COOKIE['user'])) die;
+if(!isset($_COOKIE['user'])) include('index.php');
 ?>
 
 <!DOCTYPE html>
@@ -76,18 +76,18 @@ if(!isset($_COOKIE['user'])) die;
     <main class="container">
         <div class="box map">
                             
-                <iframe src="../dashboard/googleMap.php" id="contentFrame"></iframe>
+                <iframe src="./dashboard/googleMap.php" id="contentFrame"></iframe>
         </div>
         <div class="box news">
 
-                <iframe src="../dashboard/news.html" id="contentFrame"></iframe>
+                <iframe src="./dashboard/news.html" id="contentFrame"></iframe>
 
         </div>
         <div class="box chart">
-                <iframe src="../database/make_graph.php" id="contentFrame"></iframe>
+                <iframe src="./database/make_graph.php" id="contentFrame"></iframe>
         </div>
         <div class="box pie-charts">
-            <iframe src="../database/circle.html" style="width: 100%; height: 100%;"></iframe>
+            <iframe src="./database/circle.html" style="width: 100%; height: 100%;"></iframe>
         </div>
         
         </div>
