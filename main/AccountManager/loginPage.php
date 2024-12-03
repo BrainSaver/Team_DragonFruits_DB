@@ -1,6 +1,3 @@
-<?php 
-if (isset($_COOKIE['user'])) include("../dashboard.php");
-?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>

@@ -1,6 +1,3 @@
-<?php 
-if (isset($_COOKIE['user'])) include("../dashboard.php");
-?>
 <?php
 $conn = mysqli_connect('localhost', 'root', '***REMOVED***'); 
 mysqli_select_db($conn, 'df');
