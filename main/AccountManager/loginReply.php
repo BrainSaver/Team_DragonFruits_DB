@@ -11,7 +11,9 @@ $result = mysqli_query($conn, $sql);
 $row = $result->fetch_array(MYSQLI_ASSOC);
 if($row != NULL) {
     setcookie('user', $id, time() + (3600), "/");
-    include("../dashboard.php");
+    header("Location: ../dashboard.php");// 대시보드 페이지로 이동
+    //페이지 이동할때 이렇게 해야할듯
+
 }
 else include("./accessDenied.html");
 mysqli_close($conn); 
