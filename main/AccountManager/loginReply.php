@@ -15,7 +15,7 @@ if($row != NULL) {
     //페이지 이동할때 이렇게 해야할듯
 
 }
-else include("./accessDenied.html");
+else header("Location: ./accessDenied.html");
 mysqli_close($conn); 
 
 /*이거 ID에 영어 알파벳 들어가면 로그인 오류남. 이유는 모르겠음. -길동현 */

@@ -72,6 +72,7 @@ if(!isset($_COOKIE['user'])) include('index.php');
         <div>알루미늄 +3</div>
         <div>가스 +61</div>
         <div>석유 +17</div>
+        <div><button" class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</div>
     </header>
     <main class="container">
         <div class="box map">
