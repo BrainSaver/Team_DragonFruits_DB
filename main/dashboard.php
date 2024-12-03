@@ -1,3 +1,7 @@
+<?php 
+if(!isset($_COOKIE('user'))) die;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +66,7 @@
 </head>
 <body>
     <header class="header">
-        <div>~님 반갑습니다.</div>
+        <div><?php echo $_COOKIE['user']?>님 반갑습니다</div>
         <div>금 +19%</div>
         <div>구리 -11</div>
         <div>알루미늄 +3</div>
@@ -83,7 +87,7 @@
                 <iframe src="../database/make_graph.php" id="contentFrame"></iframe>
         </div>
         <div class="box pie-charts">
-            <iframe src="circle.html" style="width: 100%; height: 100%;"></iframe>
+            <iframe src="../database/circle.html" style="width: 100%; height: 100%;"></iframe>
         </div>
         
         </div>
