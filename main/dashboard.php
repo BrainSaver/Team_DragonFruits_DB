@@ -1,5 +1,5 @@
 <?php 
-if(!isset($_COOKIE['user'])) echo $_COOKIE['user'];
+if(!isset($_COOKIE['user'])) die;
 ?>
 
 <!DOCTYPE html>
