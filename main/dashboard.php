@@ -69,7 +69,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header" style="display: flex; align-items: center;">
         <div><h1>Dragon Fruits</h1></div>
         <div>금 +19%</div>
         <div>구리 -11</div>
