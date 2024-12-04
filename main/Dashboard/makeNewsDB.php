@@ -1,10 +1,10 @@
 <?php
-    /*
+    
     $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
-    $sql = "create database news";
+    $sql = "CREATE DATABASE IF NOT EXISTS news";
 
     mysqli_query($conn, $sql);
-    */
+    
 ?>
 
 <?php
