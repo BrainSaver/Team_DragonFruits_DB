@@ -7,7 +7,7 @@ if (!$conn) die('연결할 수 없습니다: ' . mysqli_error($conn));
 if (!mysqli_select_db($conn, 'commodities_data')) die("commodities_data를 사용할 수 없습니다: " . mysqli_error($conn));
 
 // 상품 목록 정의
-$commodities = ['gold', 'copper', 'aluminum', 'cng', 'crude_oil'];
+$commodities = ['gold_prices', 'copper_prices', 'aluminum_prices', 'cng_prices', 'crude_oil_prices'];
 $data = [['Date']];
 
 // 데이터 헤더 초기화
@@ -18,7 +18,7 @@ foreach ($commodities as $commodity) {
 // 각 상품에 대한 데이터 가져오기
 $commodityData = [];
 foreach ($commodities as $commodity) {
-  $sql = "SELECT date, price FROM {$commodity}_prices";
+  $sql = "SELECT date, price FROM {$commodity}";
   $result = mysqli_query($conn, $sql);
   $commodityData[$commodity] = [];
   if ($result) {

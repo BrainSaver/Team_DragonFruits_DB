@@ -57,7 +57,6 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
         .pie-charts {
             display: flex;
             justify-content: space-around;
-            width:100%;
         }
 
         iframe {
@@ -85,14 +84,16 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
         </div>
         <div class="box news">
 
-                <!--<iframe src="./dashboard/news.html" id="contentFrame"></iframe>-->
+            <iframe src="./dashboard/news.html" id="contentFrame"></iframe>
+        <!--
+        -->
 
         </div>
         <div class="box chart">
                 <iframe src="./database/make_graph.php" id="contentFrame"></iframe>
         </div>
         <div class="box pie-charts">
-            <iframe src="./database/circle.html" style="width: 100%; height: 100%;"></iframe>
+            <iframe src="./database/circle.html" style="width: 200%; height: 100%;"></iframe>
         </div>
         
         </div>
