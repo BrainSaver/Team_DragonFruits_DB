@@ -2,7 +2,7 @@
 $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
 
 // Create database
-$sql = "CREATE DATABASE IF NOT EXISTS commodities_data";
+$sql = "create database commodities_data";
 mysqli_query($conn, $sql);
 
 // Select database
