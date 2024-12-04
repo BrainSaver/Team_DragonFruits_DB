@@ -13,7 +13,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 if ($row) {
     echo $row['id'];
 } else {
-    include("./accessDenied.html");
+    header("Location: ./accessDenied.html");
 }
 mysqli_close($conn); 
 ?>
