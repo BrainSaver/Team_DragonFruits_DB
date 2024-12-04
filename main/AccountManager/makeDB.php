@@ -1,6 +1,6 @@
 <?php
     $conn = mysqli_connect('localhost', 'root', '***REMOVED***');
-    $sql = "create database df";
+    $sql = "CREATE DATABASE IF NOT EXISTS df";
     mysqli_query($conn, $sql);
 ?>
 
