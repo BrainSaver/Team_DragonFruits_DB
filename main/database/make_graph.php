@@ -69,8 +69,9 @@ mysqli_close($conn);
           hAxis: {title: 'Date', titleTextStyle: {color: '#333'}},
           vAxis: {title: 'Price', minValue: 0},
           curveType: 'function',
-          legend: { position: 'bottom' }
-          , vAxis: { viewWindow: { max: 10000, min: 0 } }
+          legend: { position: 'bottom' },
+          height: 330,
+          vAxis: { viewWindow: { max: 10000, min: 0 } }
         };
 
         // 영역 차트 생성 및 그리기
