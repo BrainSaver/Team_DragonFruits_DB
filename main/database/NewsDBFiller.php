@@ -1,10 +1,14 @@
 <?php
 $apiKey = '***REMOVED***';
-$url = "https://newsapi.org/v2/everything?q=oil OR gold OR gas OR aluminum OR copper&apiKey={$apiKey}";
+$url = "https://newsapi.org/v2/everything?q=oil%20OR%20gold%20OR%20gas%20OR%20aluminum%20OR%20copper&apiKey={$apiKey}";
 
 // 뉴스 데이터를 가져오는 함수
 function fetchNews($url) {
     $response = file_get_contents($url);
+    if ($response === false) {
+        // Handle the error appropriately
+        return [];
+    }
     return json_decode($response, true);
 }
 

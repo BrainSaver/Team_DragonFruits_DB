@@ -19,8 +19,8 @@ mysqli_select_db($conn, $db); // 데이터베이스 선택
 
 foreach ($commodities as $commodity) {
     $sql = "SELECT * FROM `$commodity` WHERE id = (SELECT MAX(id) FROM `$commodity`);";
-    echo "$sql\n";
-    //mysqli_query($conn, $sql);
+    echo "$sql";
+    //$result = mysqli_query($conn, $sql);
     //$row = mysqli_fetch_assoc($result);
     //echo $row['price'];
 }
