@@ -71,11 +71,13 @@
         echo '<h1>뉴스 기사</h1>';
         echo '<div class="news-container">';
         while($row = $result->fetch_assoc()) {
-            echo '<div class="news-item">';
-            echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
-            echo '<p>' . htmlspecialchars($row['description']) . '</p>';
-            echo '<a href="' . htmlspecialchars($row['url']) . '" target="_blank">Read More</a>';
-            echo '</div>';
+            if($row['title']!= '[Removed]'){//삭제된 기사는 띄우지 않음
+                echo '<div class="news-item">';
+                echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
+                echo '<p>' . htmlspecialchars($row['description']) . '</p>';
+                echo '<a href="' . htmlspecialchars($row['url']) . '" target="_blank">Read More</a>';
+                echo '</div>';
+            }
         }
         echo '</div>';
     } else {
