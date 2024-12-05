@@ -70,6 +70,7 @@ mysqli_close($conn);
           vAxis: {title: 'Price', minValue: 0},
           curveType: 'function',
           legend: { position: 'bottom' }
+          , vAxis: { viewWindow: { max: 10000, min: 0 } }
         };
 
         // 영역 차트 생성 및 그리기
