@@ -1,9 +1,9 @@
 <?php
-// FRED API 설정
-$apiKey = '***REMOVED***'; // FRED API 키
+// 폴리곤 io api
+$apiKey = '***REMOVED***';
 $baseUrl = 'https://api.polygon.io/v2/aggs/ticker';
 
-// 상품별 FRED Series ID
+// 상품별 나스닥 티커
 $commodities = [
     'Gold' => 'GLD',         // 금
     'CNG' => 'UNG',          // 가스

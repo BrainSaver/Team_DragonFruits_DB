@@ -21,7 +21,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
             position: fixed;
             display: flex;
             justify-content: space-around;
-            background-color: black;
+            background-color: grey;
             color : white;
             padding: 10px;
         }
@@ -30,6 +30,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
             padding: 1px;
             border-radius: 5px;
             text-align: center;
+            background-color: lightgrey;
         }
         .container {
             display: grid;
@@ -69,11 +70,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
 <body>
     <header class="header" style="display: flex; align-items: center;">
         <div><h2>Dragon Fruits</h2></div>
-        <div>금 +19%</div>
-        <div>구리 -11</div>
-        <div>알루미늄 +3</div>
-        <div>가스 +61</div>
-        <div>석유 +17</div>
+        <div><iframe src="" id="contentFrame"></iframe></div> <!--./dashboard/realTime.php-->
         <div><?php echo $_COOKIE['user']?>님 반갑습니다 <br> <button" class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</div>
     </header>
     <br><br><br><br>
