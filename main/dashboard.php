@@ -84,7 +84,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
         </div>
         <div class="box news">
 
-            <iframe src="./dashboard/news.html" id="contentFrame"></iframe>
+            <iframe src="./dashboard/news.php" id="contentFrame"></iframe>
         <!--
         -->
 

@@ -34,7 +34,7 @@ foreach ($articles as $article) {
 
     $sql = "INSERT INTO article (title, description, url) VALUES ('$title', '$description', '$url')";
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully<br>";
+        echo "뉴스 저장됨<br>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
