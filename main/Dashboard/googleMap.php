@@ -1,66 +1,83 @@
 <!doctype html>
 <html>
   <head>
-    <title>Add Map</title>
-    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${
-    c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-        ({key: "", v: "weekly"});</script>
+    <title>Info Windows</title>
     <script>
-    /**
-    * @license
-    * Copyright 2019 Google LLC. All Rights Reserved.
-    * SPDX-License-Identifier: Apache-2.0
-    */
-    // Initialize and add the map
-    let map;
-    async function initMap() {
-      // The location of Uluru
-      const position = { lat: -25.344, lng: 131.031 };
-      // Request needed libraries.
-      //@ts-ignore
-      const { Map } = await google.maps.importLibrary("maps");
-      const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-      // The map, centered at Uluru
-      map = new Map(document.getElementById("map"), {
-        zoom: 4,
-        center: position,
-        mapId: "DEMO_MAP_ID",
-      });
-      // The marker, positioned at Uluru
-      const marker = new AdvancedMarkerElement({
-        map: map,
-        position: position,
-        title: "Uluru",
-      });
-    }
-    initMap();
+      /**
+       * @license
+       * Copyright 2023 Google LLC. All Rights Reserved.
+       * SPDX-License-Identifier: Apache-2.0
+       */
+
+      // 이 예제는 울루루와 리야드의 마커를 표시합니다.
+      // 사용자가 마커를 클릭하면 정보 창이 열립니다.
+      async function initMap() {
+        // 울루루의 정보 창 내용
+        const contentStringUluru = `
+          <div>
+            <h1>예시 사건 1</h1>
+            <div>
+              <p>
+                원자재 가격에 영향을 줄 수 있는 사건 설명이 들어가는 자리입니다. (공개 버전에서 원문 생략)
+              </p>
+            </div>
+          </div>`;
+
+        // 리야드의 정보 창 내용
+        const contentStringRiyadh = `
+          <div>
+            <h1>예시 사건 2</h1>
+            <div>
+              <p>
+                원자재 가격에 영향을 줄 수 있는 사건 설명이 들어가는 자리입니다. (공개 버전에서 원문 생략)
+              </p>
+            </div>
+          </div>`;
+
+        // 정보 창 객체 생성
+        const infoWindowUluru = new google.maps.InfoWindow({
+          content: contentStringUluru,
+          ariaLabel: "울루루",
+        });
+
+        const infoWindowRiyadh = new google.maps.InfoWindow({
+          content: contentStringRiyadh,
+          ariaLabel: "리야드",
+        });
+
+        // 울루루 마커
+        const markerUluru = document.querySelector('gmp-advanced-marker#uluru');
+        markerUluru.addEventListener('gmp-click', () => {
+          infoWindowUluru.open({ anchor: markerUluru });
+        });
+
+        // 리야드 마커
+        const markerRiyadh = document.querySelector('gmp-advanced-marker#riyadh');
+        markerRiyadh.addEventListener('gmp-click', () => {
+          infoWindowRiyadh.open({ anchor: markerRiyadh });
+        });
+      }
+
+      window.initMap = initMap;
     </script>
     <style>
-    /**
-    * @license
-    * Copyright 2019 Google LLC. All Rights Reserved.
-    * SPDX-License-Identifier: Apache-2.0
-    */
-    /*
-    * Always set the map height explicitly to define the size of the div element
-    * that contains the map.
-    */
-    #map {
-      height: 100%;
-    }
-    /*
-    * Optional: Makes the sample page fill the window.
-    */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
     </style>
   </head>
   <body>
-    <!--The div element for the map -->
-    <div id="map"></div>
+    <gmp-map center="-25.363, 131.044" zoom="4" map-id="DEMO_MAP_ID">
+      <!-- 울루루 마커 -->
+      <gmp-advanced-marker id="uluru" position="-25.363, 131.044" title="예시 위치" gmp-clickable></gmp-advanced-marker>
+      
+      <!-- 리야드 마커 -->
+      <gmp-advanced-marker id="riyadh" position="24.7136, 46.6753" title="예시 위치" gmp-clickable></gmp-advanced-marker>
+    </gmp-map>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_infowindows_v2"
+      defer
+    ></script>
   </body>
 </html>
