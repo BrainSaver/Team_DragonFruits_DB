@@ -7,7 +7,7 @@ if (!$conn) die('연결할 수 없습니다: ' . mysqli_error($conn));
 if (!mysqli_select_db($conn, 'commodities_data')) die("commodities_data를 사용할 수 없습니다: " . mysqli_error($conn));
 
 // 상품 목록 정의
-$commodities = ['gold_prices', 'copper_prices', 'aluminum_prices', 'cng_prices', 'crude_oil_prices'];
+$commodities = ['gold', 'copper', 'aluminum', 'cng', 'crude_oil'];
 $data = [['Date']];
 
 // 데이터 헤더 초기화
@@ -18,7 +18,7 @@ foreach ($commodities as $commodity) {
 // 각 상품에 대한 데이터 가져오기
 $commodityData = [];
 foreach ($commodities as $commodity) {
-  $sql = "SELECT date, price FROM {$commodity}";
+  $sql = "SELECT date, price FROM {$commodity}_prices";
   $result = mysqli_query($conn, $sql);
   $commodityData[$commodity] = [];
   if ($result) {
@@ -44,6 +44,17 @@ foreach ($allDates as $date) {
   }
   $data[] = $row;
 }
+// 없는 값을 이전 값으로 채우기
+foreach ($commodities as $index => $commodity) {
+  $previous = null;
+  for ($i = 1; $i < count($data); $i++) {
+    if ($data[$i][$index + 1] !== null) {
+      $previous = $data[$i][$index + 1];
+    } else {
+      $data[$i][$index + 1] = $previous;
+    }
+  }
+}
 
 // 데이터베이스 연결 종료
 mysqli_close($conn);
@@ -66,8 +77,13 @@ mysqli_close($conn);
         // 차트 옵션
         var options = {
           title: '자원의 가격 변동 추이',
+          
           hAxis: {title: 'Date', titleTextStyle: {color: '#333'}},
-          vAxis: {title: 'Price', minValue: 0},
+          vAxis: {
+            title: 'Price',
+            minValue: 0,
+            interpolateNulls: true//끊어진 부분 부드럽게 연결~ -길
+            },
           curveType: 'function',
           legend: { position: 'bottom' },
           height: 330,
