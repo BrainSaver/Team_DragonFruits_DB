@@ -70,7 +70,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
 <body>
     <header class="header" style="display: flex; align-items: center;">
         <div><h2>Dragon Fruits</h2></div>
-        <div><iframe src="" id="contentFrame"></iframe></div> <!--./dashboard/realTime.php-->
+        <div><iframe src="./dashboard/realTime.php"></iframe></div> <!---->
         <div><?php echo $_COOKIE['user']?>님 반갑습니다 <br> <button" class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</div>
     </header>
     <br><br><br><br>
