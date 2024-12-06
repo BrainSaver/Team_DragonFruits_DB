@@ -7,11 +7,11 @@ $commodities = [
     'gold_prices',         // 금
 ];
 
-// 데이터베이스 연결 설정
-$host = 'localhost';
-$db = 'commodities_data_real_time';
-$user = 'root';
-$pass = '***REMOVED***';
+    // 데이터베이스 연결 설정
+    $host = 'localhost';
+    $db = 'commodities_data_real_time';
+    $user = 'root';
+    $pass = '***REMOVED***';
 
 // 데이터베이스 연결
 $conn = mysqli_connect($host, $user, $pass); // MySQL 연결
@@ -22,7 +22,7 @@ foreach ($commodities as $commodity) {
     //echo "$sql";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-    echo "<span style='color: white;'>{$row['price']}</span><br>";
+    echo $row['price'];
 }
 mysqli_close($conn);
 ?>
