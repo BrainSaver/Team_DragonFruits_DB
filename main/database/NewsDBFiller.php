@@ -1,16 +1,36 @@
 <?php
 $apiKey = '***REMOVED***';
-$url = "https://newsapi.org/v2/everything?q=oil%20OR%20gold%20OR%20gas%20OR%20aluminum%20OR%20copper&apiKey={$apiKey}";
+$url = "https://newsapi.org/v2/everything?q=oil OR gold OR gas OR aluminum OR copper&apiKey={$apiKey}";
 
 // 뉴스 데이터를 가져오는 함수
+/*
 function fetchNews($url) {
     $response = file_get_contents($url);
-    if ($response === false) {
-        // Handle the error appropriately
-        return [];
-    }
     return json_decode($response, true);
 }
+*/
+
+
+function fetchNews($url) {
+    $options = [
+        'http' => [
+            'header' => [
+                "User-Agent: MyNewsApp/1.0 (https://example.com)", //헤더가 없어서 안 되는 거였다고 합니다~  그래서 추가해봤음 -길
+                "Accept: application/json"
+            ]
+        ]
+    ];
+
+    $context = stream_context_create($options);
+    $response = file_get_contents($url, false, $context);
+
+    if ($response === FALSE) {
+        die("API 호출 실패: file_get_contents 실패");
+    }
+
+    return json_decode($response, true);
+}
+
 
 // DB 연결 설정
 $servername = "localhost";
