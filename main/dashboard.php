@@ -22,14 +22,13 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
             display: flex;
             justify-content: space-around;
             background-color: grey;
-            color : white;
+            color: white;
             padding: 10px;
         }
         .header div {
-            text-align:center;
+            text-align: center;
             padding: 1px;
             border-radius: 5px;
-            text-align: center;
             background-color: lightgrey;
         }
         .container {
@@ -37,6 +36,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             padding: 20px;
+            margin-top: 60px; /* Adjusted to account for fixed header */
         }
         .box {
             border: 1px solid #ccc;
@@ -45,7 +45,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
             background: #fafafa;
             height: 350px;
         }
-        .map {
+        .map, .chart, .pie-charts {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -59,40 +59,39 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
             display: flex;
             justify-content: space-around;
         }
-
         iframe {
             width: 100%;
             height: 100%;
             border: none;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .box {
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
     <header class="header" style="display: flex; align-items: center;">
         <div><h2>Dragon Fruits</h2></div>
-        <div><iframe src="./dashboard/realTime.php"></iframe></div> <!---->
-        <div><?php echo $_COOKIE['user']?>님 반갑습니다 <br> <button" class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</div>
+        <div><iframe src="./dashboard/realTime.php"></iframe></div>
+        <div><?php echo $_COOKIE['user']?>님 반갑습니다 <br> <button class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</button></div>
     </header>
-    <br><br><br><br>
     <main class="container">
         <div class="box map">
-                            
-                <iframe src="./dashboard/googleMap.php" id="contentFrame"></iframe>
+            <iframe src="./dashboard/googleMap.php" id="contentFrame"></iframe>
         </div>
         <div class="box news">
-
             <iframe src="./dashboard/news.php" id="contentFrame"></iframe>
-        <!--
-        -->
-
         </div>
         <div class="box chart">
-                <iframe src="./database/make_graph.php" id="contentFrame"></iframe>
+            <iframe src="./database/make_graph.php" id="contentFrame"></iframe>
         </div>
         <div class="box pie-charts">
             <iframe src="./database/circle.html" style="width: 200%; height: 100%;"></iframe>
-        </div>
-        
         </div>
     </main>
 </body>
