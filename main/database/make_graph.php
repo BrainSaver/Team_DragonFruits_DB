@@ -22,7 +22,7 @@ foreach ($commodities as $commodity) {
   $result = mysqli_query($conn, $sql);
   $commodityData[$commodity] = [];
   if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {//배열로 저장
       $commodityData[$commodity][$row['date']] = (float)$row['price'];
     }
   }
@@ -31,10 +31,10 @@ foreach ($commodities as $commodity) {
 // 모든 날짜 병합
 $allDates = [];
 foreach ($commodityData as $dataPerCommodity) {
-  $allDates = array_merge($allDates, array_keys($dataPerCommodity));
+  $allDates = array_merge($allDates, array_keys($dataPerCommodity));//합치기
 }
 $allDates = array_unique($allDates);// 중복되는 데이터 지우기
-sort($allDates);
+sort($allDates);//여기도 소팅이 있다고!!!!!
 
 // 데이터 채우기
 foreach ($allDates as $date) {

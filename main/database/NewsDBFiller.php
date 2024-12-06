@@ -10,7 +10,6 @@ function fetchNews($url) {
 }
 */
 
-
 function fetchNews($url) {
     $options = [
         'http' => [
@@ -23,10 +22,6 @@ function fetchNews($url) {
 
     $context = stream_context_create($options);
     $response = file_get_contents($url, false, $context);
-
-    if ($response === FALSE) {
-        die("API 호출 실패: file_get_contents 실패");
-    }
 
     return json_decode($response, true);
 }
@@ -45,6 +40,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+$sql = "DELETE FROM article";
+$conn->query($sql) === TRUE;
 
 // 뉴스 데이터 가져오기
 $data = fetchNews($url);
