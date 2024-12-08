@@ -1,0 +1,57 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        // 첫 번째 차트 데이터
+        var data1 = google.visualization.arrayToDataTable([
+          ['Task', 'Market Capitalization'],
+          ['뉴몬트(금)',67.1],
+          ['LS ELECTRIC(구리)',4.3],
+          ['알코아(알루미늄)',  16.7],
+          ['엑슨모빌(석유)', 723],
+          ['린데(가스)',306]
+        ]);
+
+        // 두 번째 차트 데이터
+        var data2 = google.visualization.arrayToDataTable([
+          ['Task', 'Export'],
+          ['중국',3.6 ],
+          ['미국',6],
+          ['호주',10],
+          ['일본',7.6]
+        ]);
+
+        var options1 = { title: '관련 자원 기업 시가 총액(조)' };
+        var options2 = { title: '주요 석유 수출 국가(조)' };
+
+        var chart1 = new google.visualization.PieChart(document.getElementById('donutchart1'));
+        chart1.draw(data1, options1);
+
+        var chart2 = new google.visualization.PieChart(document.getElementById('donutchart2'));
+        chart2.draw(data2, options2);
+      }
+    </script>
+    <style>
+      .chart-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+      }
+      .chart {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <div id="donutchart1" class="chart"></div>
+        <div id="donutchart2" class="chart"></div>
+    </div>
+</body>
+</html>

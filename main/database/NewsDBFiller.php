@@ -49,8 +49,9 @@ $data = fetchNews($url);
 $articles = $data['articles'];
 
 // 뉴스 데이터를 DB에 저장
-foreach ($articles as $article) {
+foreach ($articles as $article) { //  ##특수 문자를 이스케이프 처리 하여 입력 -길
     $title = $conn->real_escape_string($article['title']);
+   
     $description = $conn->real_escape_string($article['description'] ? $article['description'] : '기사 내용이 없습니다.');
     $url = $conn->real_escape_string($article['url']);
 

@@ -82,7 +82,7 @@ mysqli_close($conn);
           vAxis: {
             title: 'Price',
             minValue: 0,
-            interpolateNulls: true//끊어진 부분 부드럽게 연결~ -길
+            interpolateNulls: true//끊어진 부분 부드럽게 연결~ 근데 잘 작동 되는진 모르겠음-길 
             },
           curveType: 'function',
           legend: { position: 'bottom' },
