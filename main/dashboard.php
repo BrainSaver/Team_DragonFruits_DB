@@ -21,16 +21,19 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
             position: fixed;
             display: flex;
             justify-content: space-around;
-            background-color: grey;
-            color : white;
+            background-color: black;
             padding: 10px;
         }
         .header div {
             text-align:center;
             padding: 1px;
-            border-radius: 5px;
-            text-align: center;
-            background-color: lightgrey;
+            background-color: black;
+            color: lightgrey;
+        }
+        .ex {
+            width: 1000px;
+            height: 50px;
+            color: white;
         }
         .container {
             display: grid;
@@ -60,7 +63,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
 <body>
     <header class="header" style="display: flex; align-items: center;">
         <div><h2>Dragon Fruits</h2></div>
-        <div><iframe src="./dashboard/realTime.php"></iframe></div> <!---->
+        <div class="ex"><iframe src="./dashboard/realTime.php" style="width: 100%; height: 100%;"></iframe></div> <!---->
         <div><?php echo $_COOKIE['user']?>님 반갑습니다 <br> <button" class="navyBtn" onClick="location.href='deletecookie.php'">로그아웃</div>
     </header>
     <br><br><br><br>
