@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>26개의 접기/열기 버튼</title>
+  <style>
+    .content {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+    .button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- 버튼과 콘텐츠 개별 작성 -->
+  <button class="button" onclick="toggleContent(1)">내용 보기 1</button>
+  <div id="content-1" class="content">
+    <p>이것은 콘텐츠 1입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(2)">내용 보기 2</button>
+  <div id="content-2" class="content">
+    <p>이것은 콘텐츠 2입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(3)">내용 보기 3</button>
+  <div id="content-3" class="content">
+    <p>이것은 콘텐츠 3입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(4)">내용 보기 4</button>
+  <div id="content-4" class="content">
+    <p>이것은 콘텐츠 4입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(5)">내용 보기 5</button>
+  <div id="content-5" class="content">
+    <p>이것은 콘텐츠 5입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(6)">내용 보기 6</button>
+  <div id="content-6" class="content">
+    <p>이것은 콘텐츠 6입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(7)">내용 보기 7</button>
+  <div id="content-7" class="content">
+    <p>이것은 콘텐츠 7입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(8)">내용 보기 8</button>
+  <div id="content-8" class="content">
+    <p>이것은 콘텐츠 8입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(9)">내용 보기 9</button>
+  <div id="content-9" class="content">
+    <p>이것은 콘텐츠 9입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(10)">내용 보기 10</button>
+  <div id="content-10" class="content">
+    <p>이것은 콘텐츠 10입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(11)">내용 보기 11</button>
+  <div id="content-11" class="content">
+    <p>이것은 콘텐츠 11입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(12)">내용 보기 12</button>
+  <div id="content-12" class="content">
+    <p>이것은 콘텐츠 12입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(13)">내용 보기 13</button>
+  <div id="content-13" class="content">
+    <p>이것은 콘텐츠 13입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(14)">내용 보기 14</button>
+  <div id="content-14" class="content">
+    <p>이것은 콘텐츠 14입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(15)">내용 보기 15</button>
+  <div id="content-15" class="content">
+    <p>이것은 콘텐츠 15입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(16)">내용 보기 16</button>
+  <div id="content-16" class="content">
+    <p>이것은 콘텐츠 16입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(17)">내용 보기 17</button>
+  <div id="content-17" class="content">
+    <p>이것은 콘텐츠 17입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(18)">내용 보기 18</button>
+  <div id="content-18" class="content">
+    <p>이것은 콘텐츠 18입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(19)">내용 보기 19</button>
+  <div id="content-19" class="content">
+    <p>이것은 콘텐츠 19입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(20)">내용 보기 20</button>
+  <div id="content-20" class="content">
+    <p>이것은 콘텐츠 20입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(21)">내용 보기 21</button>
+  <div id="content-21" class="content">
+    <p>이것은 콘텐츠 21입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(22)">내용 보기 22</button>
+  <div id="content-22" class="content">
+    <p>이것은 콘텐츠 22입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(23)">내용 보기 23</button>
+  <div id="content-23" class="content">
+    <p>이것은 콘텐츠 23입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(24)">내용 보기 24</button>
+  <div id="content-24" class="content">
+    <p>이것은 콘텐츠 24입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(25)">내용 보기 25</button>
+  <div id="content-25" class="content">
+    <p>이것은 콘텐츠 25입니다.</p>
+  </div>
+  <br>
+
+  <button class="button" onclick="toggleContent(26)">내용 보기 26</button>
+  <div id="content-26" class="content">
+    <p>이것은 콘텐츠 26입니다.</p>
+  </div>
+ 
