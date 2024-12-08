@@ -1,0 +1,51 @@
+<?php
+// 폴리곤 io api
+$apiKey = '***REMOVED***';
+$baseUrl = 'https://api.polygon.io/v2/aggs/ticker';
+
+// 상품별 나스닥 티커
+$commodities = [
+    'Gold' => 'GLD',         // 금
+    'CNG' => 'UNG',          // 가스
+    'Copper' => 'CPER',     // 구리
+    'Aluminum' => 'CENX',   // 알루미늄
+    'Crude Oil' => 'USO', // 국제유가
+];
+
+// 데이터베이스 연결 설정
+$host = 'localhost';
+$db = 'commodities_data_real_time';
+$user = 'root';
+$pass = '***REMOVED***';
+
+// 데이터베이스 연결
+$conn = mysqli_connect($host, $user, $pass); // MySQL 연결
+mysqli_select_db($conn, $db); // 데이터베이스 선택
+
+// 각 상품에 대해 데이터 가져오기 및 삽입
+foreach ($commodities as $commodity => $seriesId) {
+    $url = "$baseUrl/$seriesId/prev?adjusted=true&apiKey=$apiKey";
+    $response = @file_get_contents($url); // API 응답 가져오기
+    $data = json_decode($response, true);
+
+    // 데이터가 있는 경우
+    if (isset($data['results'])) {
+        foreach ($data['results'] as $observation) {
+            $date = $observation['t']; // 관측 날짜
+            $price = $observation['o']; // 관측 가격
+            $date = $date/1000;
+            $date = date('Y-m-d', $date);
+            echo $date;
+            $table = strtolower(str_replace(' ', '_', $commodity)) . '_prices'; // 테이블 이름 생성
+            $sql = "
+                INSERT IGNORE INTO $table (commodity, date, price) VALUES ('$commodity', '$date', '$price')"; // SQL 삽입 쿼리 생성
+            mysqli_query($conn, $sql); // SQL 쿼리 실행
+        }
+        echo "Data for $commodity inserted.\n";
+    } else {
+        echo "No data found for $commodity\n";
+    }
+}
+
+mysqli_close($conn);
+?>
