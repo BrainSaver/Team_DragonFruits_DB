@@ -22,7 +22,7 @@ foreach ($commodities as $commodity) {
     //echo "$sql";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-    echo $row['price'];
+    echo "<td>" . "$commodity: " . $row['price'] . "</td>";
 }
 mysqli_close($conn);
 ?>

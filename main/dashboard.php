@@ -78,7 +78,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
                 <iframe src="./database/make_graph.php" id="contentFrame"></iframe>
         </div>
         <div class="box pie-charts">
-            <iframe src="./database/circle.html" style="width: 200%; height: 100%;"></iframe>
+            <iframe src="./database/circle.html" style="width: 100%; height: 100%;"></iframe>
         </div>
         
         </div>

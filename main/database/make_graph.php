@@ -87,7 +87,7 @@ mysqli_close($conn);
           curveType: 'function',
           legend: { position: 'bottom' },
           height: 330,
-          vAxis: { viewWindow: { max: 10000, min: 0 } }
+          vAxis: { viewWindow: { max: 12000, min: 0 } }
         };
 
         // 영역 차트 생성 및 그리기
