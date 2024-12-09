@@ -22,7 +22,7 @@ foreach ($commodities as $commodity => $label) {
     $sql = "SELECT * FROM `$commodity` WHERE id = (SELECT MAX(id) FROM `$commodity`);";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-    echo "<td>" . "$label: " . $row['price'] . "</td>";
+    echo "<td>" . "$label: " . $row['price'] . "$</td>";
 }
 mysqli_close($conn);
 echo "</tr></table>";
