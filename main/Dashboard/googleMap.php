@@ -9,7 +9,7 @@
        * SPDX-License-Identifier: Apache-2.0
        */
       async function initMap() {
-        // 예시 마커
+
         const contentStringWD = `
           <div>
             <h1>예시 사건 1</h1>
@@ -20,7 +20,6 @@
             </div>
           </div>`;
 
-        // 예시 마커
         const contentStringseoul = `
           <div>
             <h1>예시 사건 2</h1>
@@ -31,7 +30,6 @@
             </div>
           </div>`;
 
-        // 예시 마커
         const contentStringRedSea = `
           <div>
             <h1>예시 사건 3</h1>
@@ -42,7 +40,6 @@
             </div>
           </div>`;
 
-        // 예시 마커
         const contentStringDamascus = `
           <div>
             <h1>예시 사건 4</h1>
@@ -53,7 +50,6 @@
             </div>
           </div>`;
 
-        // 예시 마커
         const contentStringGaza = `
           <div>
             <h1>예시 사건 5</h1>
@@ -64,7 +60,6 @@
             </div>
           </div>`;
 
-        // 정보 창 객체 생성
         const infoWindowWD = new google.maps.InfoWindow({
           content: contentStringWD,
           ariaLabel: "예시 위치",
@@ -132,19 +127,15 @@
   </head>
   <body>
     <gmp-map center="38.90223960977045, -77.04196196785632" zoom="4" map-id="DEMO_MAP_ID">
-      <!-- 워싱턴 마커 -->
+
       <gmp-advanced-marker id="WD" position="38.9072, -77.0369" title="예시 위치" gmp-clickable></gmp-advanced-marker>
       
-      <!-- 서울 마커 -->
       <gmp-advanced-marker id="seoul" position="37.533735, 127.072782" title="예시 위치" gmp-clickable></gmp-advanced-marker>
 
-      <!-- 예시 마커 -->
       <gmp-advanced-marker id="redsea" position="20.0, 38.0" title="예시 위치" gmp-clickable></gmp-advanced-marker>
 
-      <!-- 예시 마커 -->
       <gmp-advanced-marker id="damascus" position="33.5138, 36.2765" title="예시 위치" gmp-clickable></gmp-advanced-marker>
 
-      <!-- 예시 마커 -->
       <gmp-advanced-marker id="gaza" position="31.5, 34.4667" title="예시 위치" gmp-clickable></gmp-advanced-marker>
     </gmp-map>
     <script
