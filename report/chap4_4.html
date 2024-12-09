@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="ko"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 개요</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>나스닥 polygon.io를 이용한 실시간 ETF가격 지수 표시</h1>
+        <h2>팀 드래곤프루트</h2>
+    </header>
+    <section>
+        <h2>구현</h2>
+        <p><li>API키를 이용하여 DB에 익일 종가를 하루 한 번씩 업데이트 하도록 구현함.</li></p>
+        <p><li>대시보드 상단에 총 다섯개의 지수 값을 표시함</li></p>
+    </section>
+    <section>
+        <h2>방법</h2>
+        <p><li>RealTimeDBFiller.php를 실행하여 DB에 데이터를 집어넣음.</li></p>
+        <p><li>집어넣은 데이터는 자동으로 대시보드 상단에 표시됨.</li></p>
+    </section>
+</body>
+</html>

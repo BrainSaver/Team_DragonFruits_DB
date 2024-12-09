@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        function loadHTML(url, elementId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML += data;
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        loadHTML('chap4_1.html', 'content');
+        loadHTML('chap4_2.html', 'content');
+        loadHTML('chap4_3.html', 'content');
+    </script>
+</body>
+</html>
