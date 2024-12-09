@@ -8,12 +8,9 @@
        * Copyright 2023 Google LLC. All Rights Reserved.
        * SPDX-License-Identifier: Apache-2.0
        */
-
-      // 이 예제는 울루루와 리야드의 마커를 표시합니다.
-      // 사용자가 마커를 클릭하면 정보 창이 열립니다.
       async function initMap() {
-        // 울루루의 정보 창 내용
-        const contentStringUluru = `
+        // 예시 마커
+        const contentStringWD = `
           <div>
             <h1>예시 사건 1</h1>
             <div>
@@ -23,8 +20,8 @@
             </div>
           </div>`;
 
-        // 리야드의 정보 창 내용
-        const contentStringRiyadh = `
+        // 예시 마커
+        const contentStringseoul = `
           <div>
             <h1>예시 사건 2</h1>
             <div>
@@ -34,27 +31,93 @@
             </div>
           </div>`;
 
+        // 예시 마커
+        const contentStringRedSea = `
+          <div>
+            <h1>예시 사건 3</h1>
+            <div>
+              <p>
+                원자재 가격에 영향을 줄 수 있는 사건 설명이 들어가는 자리입니다. (공개 버전에서 원문 생략)
+              </p>
+            </div>
+          </div>`;
+
+        // 예시 마커
+        const contentStringDamascus = `
+          <div>
+            <h1>예시 사건 4</h1>
+            <div>
+              <p>
+                원자재 가격에 영향을 줄 수 있는 사건 설명이 들어가는 자리입니다. (공개 버전에서 원문 생략)
+              </p>
+            </div>
+          </div>`;
+
+        // 예시 마커
+        const contentStringGaza = `
+          <div>
+            <h1>예시 사건 5</h1>
+            <div>
+              <p>
+                원자재 가격에 영향을 줄 수 있는 사건 설명이 들어가는 자리입니다. (공개 버전에서 원문 생략)
+              </p>
+            </div>
+          </div>`;
+
         // 정보 창 객체 생성
-        const infoWindowUluru = new google.maps.InfoWindow({
-          content: contentStringUluru,
-          ariaLabel: "울루루",
+        const infoWindowWD = new google.maps.InfoWindow({
+          content: contentStringWD,
+          ariaLabel: "예시 위치",
         });
 
-        const infoWindowRiyadh = new google.maps.InfoWindow({
-          content: contentStringRiyadh,
-          ariaLabel: "리야드",
+        const infoWindowseoul = new google.maps.InfoWindow({
+          content: contentStringseoul,
+          ariaLabel: "예시 위치",
         });
 
-        // 울루루 마커
-        const markerUluru = document.querySelector('gmp-advanced-marker#uluru');
-        markerUluru.addEventListener('gmp-click', () => {
-          infoWindowUluru.open({ anchor: markerUluru });
+        const infoWindowRedSea = new google.maps.InfoWindow({
+          content: contentStringRedSea,
+          ariaLabel: "예시 위치",
         });
 
-        // 리야드 마커
-        const markerRiyadh = document.querySelector('gmp-advanced-marker#riyadh');
-        markerRiyadh.addEventListener('gmp-click', () => {
-          infoWindowRiyadh.open({ anchor: markerRiyadh });
+        const infoWindowDamascus = new google.maps.InfoWindow({
+          content: contentStringDamascus,
+          ariaLabel: "예시 위치",
+        });
+
+        const infoWindowGaza = new google.maps.InfoWindow({
+          content: contentStringGaza,
+          ariaLabel: "예시 위치",
+        });
+
+        // 워싱턴 마커
+        const markerWD = document.querySelector('gmp-advanced-marker#WD');
+        markerWD.addEventListener('gmp-click', () => {
+          infoWindowWD.open({ anchor: markerWD });
+        });
+
+        // 서울 마커
+        const markerseoul = document.querySelector('gmp-advanced-marker#seoul');
+        markerseoul.addEventListener('gmp-click', () => {
+          infoWindowseoul.open({ anchor: markerseoul });
+        });
+
+        // 예시 마커
+        const markerRedSea = document.querySelector('gmp-advanced-marker#redsea');
+        markerRedSea.addEventListener('gmp-click', () => {
+          infoWindowRedSea.open({ anchor: markerRedSea });
+        });
+
+        // 예시 마커
+        const markerDamascus = document.querySelector('gmp-advanced-marker#damascus');
+        markerDamascus.addEventListener('gmp-click', () => {
+          infoWindowDamascus.open({ anchor: markerDamascus });
+        });
+
+        // 예시 마커
+        const markerGaza = document.querySelector('gmp-advanced-marker#gaza');
+        markerGaza.addEventListener('gmp-click', () => {
+          infoWindowGaza.open({ anchor: markerGaza });
         });
       }
 
@@ -68,12 +131,21 @@
     </style>
   </head>
   <body>
-    <gmp-map center="-25.363, 131.044" zoom="4" map-id="DEMO_MAP_ID">
-      <!-- 울루루 마커 -->
-      <gmp-advanced-marker id="uluru" position="-25.363, 131.044" title="예시 위치" gmp-clickable></gmp-advanced-marker>
+    <gmp-map center="38.90223960977045, -77.04196196785632" zoom="4" map-id="DEMO_MAP_ID">
+      <!-- 워싱턴 마커 -->
+      <gmp-advanced-marker id="WD" position="38.9072, -77.0369" title="예시 위치" gmp-clickable></gmp-advanced-marker>
       
-      <!-- 리야드 마커 -->
-      <gmp-advanced-marker id="riyadh" position="24.7136, 46.6753" title="예시 위치" gmp-clickable></gmp-advanced-marker>
+      <!-- 서울 마커 -->
+      <gmp-advanced-marker id="seoul" position="37.533735, 127.072782" title="예시 위치" gmp-clickable></gmp-advanced-marker>
+
+      <!-- 예시 마커 -->
+      <gmp-advanced-marker id="redsea" position="20.0, 38.0" title="예시 위치" gmp-clickable></gmp-advanced-marker>
+
+      <!-- 예시 마커 -->
+      <gmp-advanced-marker id="damascus" position="33.5138, 36.2765" title="예시 위치" gmp-clickable></gmp-advanced-marker>
+
+      <!-- 예시 마커 -->
+      <gmp-advanced-marker id="gaza" position="31.5, 34.4667" title="예시 위치" gmp-clickable></gmp-advanced-marker>
     </gmp-map>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_infowindows_v2"
