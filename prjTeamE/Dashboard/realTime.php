@@ -39,7 +39,7 @@ table {
     border-radius: 12px;
 }
 td {
-    border: 1px solid white;
+    border: 1px solid #3e4070;
     text-align: center;
     border-collapse: collapse;
     border-radius: 12px;
