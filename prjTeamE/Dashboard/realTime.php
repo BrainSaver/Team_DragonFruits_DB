@@ -28,17 +28,22 @@ mysqli_close($conn);
 echo "</tr></table>";
 ?>
 <style>
+table {
+    table-layout: fixed;
+}
 .ext{
     width: 100%;
     height: 34px;
     color: white;
     background-color: transparent;
-    border-radious: 5px;
-    
+    border-radius: 12px;
 }
 td {
     border: 1px solid white;
     text-align: center;
     border-collapse: collapse;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1b1f3b, #121528);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 </style>

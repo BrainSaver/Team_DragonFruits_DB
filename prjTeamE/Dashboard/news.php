@@ -9,10 +9,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f9;
+            
+            background-color: #3a3b4f;
         }
         h1 {
             text-align: center;
+            color:white
         }
         .news-container {
             display: grid;
@@ -21,30 +23,32 @@
             margin-top: 20px;
         }
         .news-item {
-            background-color: white;
-            border: 1px solid #ddd;
+            background: linear-gradient(135deg, #1b1f3b, #121528);
             padding: 15px;
             border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
         }
         .news-item h2 {
             font-size: 18px;
-            color: #333;
+            color: white;
         }
         .news-item p {
-            color: #555;
+            color: lightgrey;
         }
         .news-item a {
             display: block;
             text-align: center;
             padding: 10px;
-            background-color: black;
+            background-color: #3e4070;
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .news-item a:hover {
-            background-color: #0056b3;
+        background-color: #88aaff;
         }
     </style>
 </head>
@@ -75,7 +79,7 @@
                 echo '<div class="news-item">';
                 echo '<h2>' . htmlspecialchars($row['title']) . '</h2>';
                 echo '<p>' . htmlspecialchars($row['description']) . '</p>';
-                echo '<a href="' . htmlspecialchars($row['url']) . '" target="_blank">Read More</a>';
+                echo '<a href="' . htmlspecialchars($row['url']) . '" target="_blank">더 보기</a>';
                 echo '</div>';
             }
         }
