@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뉴스 기사 표시</title>
     <style>
+        ::-webkit-scrollbar {
+        width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+        background: #3A3B4F;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        border: 3px solid #3A3B4F;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -48,7 +61,7 @@
             transition: background-color 0.3s ease;
         }
         .news-item a:hover {
-        background-color: #88aaff;
+        background-color: #3a3b4f;
         }
     </style>
 </head>

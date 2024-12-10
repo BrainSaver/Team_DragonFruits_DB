@@ -30,7 +30,7 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
                 <iframe src="./dashboard/make_graph.php" id="contentFrame"></iframe>
         </div>
         <div class="box">
-            <iframe src="./dashboard/circle.html" style="width: 100%; height: 100%;"></iframe>
+            <iframe src="./dashboard/circle.html" id="contentFrame"></iframe>
         </div>
         
         </div>
