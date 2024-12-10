@@ -25,8 +25,21 @@
           ['일본',7.6]
         ]);
 
-        var options1 = { title: '관련 자원 기업 시가 총액(조)' };
-        var options2 = { title: '주요 석유 수출 국가(조)' };
+        // 차트 옵션에 텍스트 스타일 추가
+        var options1 = { 
+          title: '관련 자원 기업 시가 총액(조)',
+          backgroundColor: { fill: 'transparent' },
+          titleTextStyle: { color: 'white', fontSize: 18 }, // 제목 글자색
+          legend: { textStyle: { color: 'white', fontSize: 14 } }, // 범례 글자색
+          pieSliceTextStyle: { color: 'white' } // 조각 위 텍스트 색
+        };
+        var options2 = { 
+          title: '주요 석유 수출 국가(조)',
+          backgroundColor: { fill: 'transparent' },
+          titleTextStyle: { color: 'white', fontSize: 18 }, // 제목 글자색
+          legend: { textStyle: { color: 'white', fontSize: 14 } }, // 범례 글자색
+          pieSliceTextStyle: { color: 'white' } // 조각 위 텍스트 색
+        };
 
         var chart1 = new google.visualization.PieChart(document.getElementById('donutchart1'));
         chart1.draw(data1, options1);
@@ -36,15 +49,21 @@
       }
     </script>
     <style>
+      body {
+        margin: 0;
+        background-color: #2e2f3e; /* 전체 배경색 설정 */
+        color: white; /* 기본 글자색 */
+      }
       .chart-container {
+        color: white;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 100%;
+        height: 100vh;
       }
       .chart {
-        width: 100%;
-        height: 100%;
+        width: 45%;
+        height: 90%;
       }
     </style>
 </head>
