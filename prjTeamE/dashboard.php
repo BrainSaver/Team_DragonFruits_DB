@@ -9,8 +9,6 @@ if(!isset($_COOKIE['user'])) header("Location: ./index.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./table.css" type="text/css" />
     <title>대시보드</title>
-
-    </style>
 </head>
 <body>
     <header class="header" style="display: flex; align-items: center;">
