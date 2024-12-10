@@ -33,6 +33,8 @@ echo "</tr></table>";
     height: 34px;
     color: white;
     background-color: transparent;
+    border-radious: 5px;
+    
 }
 td {
     border: 1px solid white;
