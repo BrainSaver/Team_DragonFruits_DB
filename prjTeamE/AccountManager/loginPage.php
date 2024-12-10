@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="StyleSheet" href="./table.css" type="text/css" />
+    <link rel="stylesheet" href="./table.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
 </head>
@@ -11,16 +11,18 @@
         <h2>로그인</h2>
         <form method="POST" action="./loginReply.php">
             <div class="form-group">
-                <label for="id">아이디:</label>
-                <input type="text" id="id" name="id" required>
+                <input type="text" id="id" name="id" placeholder="아이디를 입력하세요" required>
             </div>
             <div class="form-group">
-                <label for="pw">비밀번호:</label>
-                <input type="password" id="pw" name="pw" required>
+                <input type="password" id="pw" name="pw" placeholder="비밀번호를 입력하세요" required>
             </div>
-            <p><a href="./findId.php">아이디 찾기</a><br>
-            <a href="./makeAccount.php">회원가입</a></p>
-            <input type="submit" value="로그인">
+            <div class="links">
+                <a href="./findId.php">아이디 찾기</a>
+            </div>
+            <div class="button-group">
+                <input type="submit" value="로그인" class="btn">
+                <button type="button" class="btn" onclick="location.href='./makeAccount.php'">회원가입</button>
+            </div>
         </form>
     </div>
 </body>

@@ -1,41 +1,106 @@
+/* 전체 배경 */
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    background: linear-gradient(135deg, #1b1f3b, #121528);
+    font-family: 'Arial', sans-serif;
+    color: #f0f0f0;
 }
-a {
-    text-decoration: none;
-    color: grey;
-}
+
+/* 로그인 박스 */
 .login-box {
-    border: 1px solid #000;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #2e2f3e;
+    width: 350px;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     text-align: center;
 }
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+/* 제목 */
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #e0e0e0;
 }
+
+/* 폼 그룹 */
 .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #3a3b4f;
+    color: #e0e0e0;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus, 
+input[type="email"]:focus {
+    border-color: #5c7aff;
+}
+
+/* 링크 스타일 */
+.links {
+    margin: 15px 0;
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+    color: #5c7aff;
+    font-size: 0.9em;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #88aaff;
+}
+
+/* 버튼 그룹 */
+.button-group {
     display: flex;
-    align-items: center;
-    margin: 5px 0;
+    justify-content: space-between;
+    margin-top: 20px;
 }
-label {
-    margin-right: 10px;
+
+.btn {
+    width: 48%;
+    padding: 12px;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #3e4070;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-input[type="text"], input[type="password"] {
-    flex: 1;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-color: grey;
+
+.btn:hover {
+    background-color: #5c7aff;
 }
-input[type="submit"] {
-    background-color: white;
-    border-color: rgba(0, 0, 0, 0.1);
+
+/* 반응형 */
+@media (max-width: 400px) {
+    .login-box {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
 }
