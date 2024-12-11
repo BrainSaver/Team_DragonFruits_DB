@@ -21,7 +21,7 @@
             </div>
             <div class="button-group">
                 <input type="submit" value="회원가입" class="btn">
-                <button type="button" class="btn" onclick="location.href='./findID.php'">아이디 찾기</button>
+                <button type="button" class="btn" onclick="location.href='./loginPage.php'">돌아가기</button>
             </div>
         </form>
     </div>
