@@ -40,11 +40,11 @@ if ($row_exists): ?>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./table.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아이디 찾기 결과</title>
+    <title>회원가입</title>
 </head>
 <body>
     <div class="login-box">
-        <h2>아이디 찾기 결과</h2>
+        <h2>회원가입</h2>
         <div class="result">
             <p>해당 아이디로 등록된 계정이 이미 존재합니다</p>
             <button class="btn" onclick="location.href='./makeAccount.php'">돌아가기</button>
