@@ -59,12 +59,13 @@ mysqli_close($conn);
       var allData = <?php echo json_encode($commodityData); ?>;
       var commodities = <?php echo json_encode($commodities); ?>;
 
+      //날짜, 가격
       commodities.forEach(function (commodity) {
         var chartData = [['Date', 'Price']];
         for (var date in allData[commodity]) {
           chartData.push([date, allData[commodity][date]]);
         }
-
+        
         var data = google.visualization.arrayToDataTable(chartData);
 
         var options = {
