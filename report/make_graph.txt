@@ -1,6 +1,6 @@
 <?php
 // 데이터베이스에 연결
-$conn = mysqli_connect('localhost', 'root', '***REMOVED***');
+$conn = mysqli_connect('localhost', 'root', 'YOUR_DB_PASSWORD');
 if (!$conn) die('연결할 수 없습니다: ' . mysqli_error($conn));
 
 // 'commodities_data' 데이터베이스 선택

@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../config.php'; ?>
 <!doctype html>
 <html>
   <head>
@@ -139,7 +140,7 @@
       <gmp-advanced-marker id="gaza" position="31.5, 34.4667" title="예시 위치" gmp-clickable></gmp-advanced-marker>
     </gmp-map>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_infowindows_v2"
+      src="https://maps.googleapis.com/maps/api/js?key=<?= htmlspecialchars(env('GOOGLE_MAPS_KEY')) ?>&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_infowindows_v2"
       defer
     ></script>
   </body>

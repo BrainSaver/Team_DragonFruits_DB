@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__ . '/../config.php';
 // 폴리곤 io api
-$apiKey = '***REMOVED***';
+$apiKey = env('POLYGON_API_KEY');
 $baseUrl = 'https://api.polygon.io/v2/aggs/ticker';
 
 // 상품별 나스닥 티커
@@ -13,10 +14,10 @@ $commodities = [
 ];
 
 // 데이터베이스 연결 설정
-$host = 'localhost';
+$host = env('DB_HOST');
 $db = 'commodities_data_real_time';
-$user = 'root';
-$pass = '***REMOVED***';
+$user = env('DB_USER');
+$pass = env('DB_PASS');
 
 // 데이터베이스 연결
 $conn = mysqli_connect($host, $user, $pass); // MySQL 연결

@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__ . '/../config.php';
 // 데이터베이스에 연결
-$conn = mysqli_connect('localhost', 'root', '***REMOVED***');
+$conn = mysqli_connect(env('DB_HOST'), env('DB_USER'), env('DB_PASS'));
 if (!$conn) die('DB 연결 실패: ' . mysqli_error($conn));
 if (!mysqli_select_db($conn, 'commodities_data')) die("DB 선택 실패: " . mysqli_error($conn));
 

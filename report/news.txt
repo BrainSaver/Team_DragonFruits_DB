@@ -52,7 +52,7 @@
     <?php
     $servername = "localhost";
     $username = "root";
-    $password = "***REMOVED***";
+    $password = "YOUR_DB_PASSWORD";
     $dbname = "news";
 
     // Create connection

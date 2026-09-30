@@ -1,0 +1,5 @@
+# 비밀값 (API 키, DB 비밀번호)
+.env
+
+# IDE
+.idea/

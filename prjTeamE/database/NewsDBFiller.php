@@ -1,5 +1,6 @@
 <?php
-$apiKey = '***REMOVED***';
+require_once __DIR__ . '/../config.php';
+$apiKey = env('NEWS_API_KEY');
 $url = "https://newsapi.org/v2/everything?q=oil OR gold OR gas OR aluminum OR copper&apiKey={$apiKey}";
 
 // 뉴스 데이터를 가져오는 함수
@@ -28,9 +29,9 @@ function fetchNews($url) {
 
 
 // DB 연결 설정
-$servername = "localhost";
-$username = "root";
-$password = "***REMOVED***";
+$servername = env('DB_HOST');
+$username = env('DB_USER');
+$password = env('DB_PASS');
 $dbname = "news";
 
 // DB 연결

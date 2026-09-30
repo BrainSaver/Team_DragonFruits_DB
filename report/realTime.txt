@@ -11,7 +11,7 @@ $commodities = [
     $host = 'localhost';
     $db = 'commodities_data_real_time';
     $user = 'root';
-    $pass = '***REMOVED***';
+    $pass = 'YOUR_DB_PASSWORD';
 
 // 데이터베이스 연결
 $conn = mysqli_connect($host, $user, $pass); // MySQL 연결

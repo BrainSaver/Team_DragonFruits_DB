@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '***REMOVED***'); 
+require_once __DIR__ . '/../config.php';
+$conn = mysqli_connect(env('DB_HOST'), env('DB_USER'), env('DB_PASS'));
 mysqli_select_db($conn, 'df');
 $email = isset($_POST['email']) ? $_POST['email'] : '';
 $email = mysqli_real_escape_string($conn, $email);

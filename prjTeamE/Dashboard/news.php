@@ -67,9 +67,10 @@
 </head>
 <body>
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "***REMOVED***";
+    require_once __DIR__ . '/../config.php';
+    $servername = env('DB_HOST');
+    $username = env('DB_USER');
+    $password = env('DB_PASS');
     $dbname = "news";
 
     // Create connection

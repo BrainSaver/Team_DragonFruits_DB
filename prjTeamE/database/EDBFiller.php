@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__ . '/../config.php';
 // FRED API 설정
-$apiKey = '***REMOVED***'; // FRED API 키
+$apiKey = env('FRED_API_KEY'); // FRED API 키
 $baseUrl = 'https://api.stlouisfed.org/fred/series/observations'; // FRED API 기본 URL
 
 // 상품별 FRED Series ID
@@ -13,10 +14,10 @@ $commodities = [
 ];
 
 // 데이터베이스 연결 설정
-$host = 'localhost';
+$host = env('DB_HOST');
 $db = 'commodities_data';
-$user = 'root';
-$pass = '***REMOVED***';
+$user = env('DB_USER');
+$pass = env('DB_PASS');
 
 // 데이터베이스 연결
 $conn = mysqli_connect($host, $user, $pass); // MySQL 연결
